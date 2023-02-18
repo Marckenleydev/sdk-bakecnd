@@ -14,10 +14,10 @@ import variantRoute from "./routes/variant.js"
 mongoose.set('strictQuery', true);
 
 // Database link connection
-const MONGO_URL="mongodb+srv://root:helloworld@firstnodeapp.ricbp.mongodb.net/Instagram-OXO-tech?retryWrites=true&w=majority"
+// const MONGO_URL="mongodb+srv://root:helloworld@firstnodeapp.ricbp.mongodb.net/Instagram-OXO-tech?retryWrites=true&w=majority"
 
 
-const PORT = 8801 || 4001
+// const PORT = 8801 || 4001
 
 app.use(cors());
 app.use(express.json());
@@ -34,10 +34,10 @@ app.use("/api/variant",variantRoute)
 
 // connect to mongoDB Database
 
-mongoose.connect(MONGO_URL).then(()=>{
+mongoose.connect(process.env.MONGO_URL).then(()=>{
     console.log("mongoDb is successfull connected");
 
-    app.listen(PORT ,console.log(`server is running at port ${PORT}`))
+    app.listen(process.env.PORT ,console.log(`server is running at port ${PORT}`))
 })
 
 
